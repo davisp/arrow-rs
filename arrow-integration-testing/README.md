@@ -60,7 +60,7 @@ Follow the [C++ Direction](https://github.com/apache/arrow/tree/main/docs/source
 cd arrow/cpp
 mkdir build
 cd  build
-cmake  -DARROW_BUILD_INTEGRATION=ON -DARROW_FLIGHT=ON --preset ninja-debug-minimal ..
+cmake  -DARROW_BUILD_INTEGRATION=ON --preset ninja-debug-flight-sql ..
 ninja
 ```
 
