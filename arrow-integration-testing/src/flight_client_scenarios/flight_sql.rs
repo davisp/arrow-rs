@@ -15,9 +15,23 @@
 // specific language governing permissions and limitations
 // under the License.
 
-//! Collection of utilities for testing the Flight client.
+//! Scenario for testing basic auth.
 
-pub mod auth_basic_proto;
-pub mod flight_sql;
-pub mod integration_test;
-pub mod middleware;
+use crate::{AUTH_PASSWORD, AUTH_USERNAME};
+
+use arrow_flight::sql::client::FlightSqlServiceClient;
+
+type Error = Box<dyn std::error::Error + Send + Sync + 'static>;
+type Result<T = (), E = Error> = std::result::Result<T, E>;
+
+/// Run a scenario that tests basic auth.
+pub async fn run_scenario(host: &str, port: u16) -> Result {
+    let url = format!("grpc+tcp://{host}:{port}").parse::<tonic::transport::Uri>()?;
+    let endpoint = tonic::transport::channel::Channel::builder(url);
+    let channel = endpoint.connect().await?;
+    let client = FlightSqlServiceClient::new(channel);
+
+    todo!("Figure out how this is supposed to work.");
+
+    Ok(())
+}

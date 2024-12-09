@@ -26,6 +26,8 @@ enum Scenario {
     Middleware,
     #[clap(name = "auth:basic_proto")]
     AuthBasicProto,
+    #[clap(name = "flight_sql")]
+    FlightSQL,
 }
 
 #[derive(Debug, Parser)]
@@ -51,6 +53,9 @@ async fn main() -> Result {
         }
         Some(Scenario::AuthBasicProto) => {
             flight_server_scenarios::auth_basic_proto::scenario_setup(port).await?
+        }
+        Some(Scenario::FlightSQL) => {
+            flight_server_scenarios::flight_sql::scenario_setup(port).await?;
         }
         None => {
             flight_server_scenarios::integration_test::scenario_setup(port).await?;

@@ -22,6 +22,7 @@ use arrow_flight::{FlightEndpoint, Location, Ticket};
 use tokio::net::TcpListener;
 
 pub mod auth_basic_proto;
+pub mod flight_sql;
 pub mod integration_test;
 pub mod middleware;
 

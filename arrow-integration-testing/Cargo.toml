@@ -35,12 +35,17 @@ logging = ["tracing-subscriber"]
 
 [dependencies]
 arrow = { path = "../arrow", default-features = false, features = ["test_utils", "ipc", "ipc_compression", "json", "ffi"] }
-arrow-flight = { path = "../arrow-flight", default-features = false }
+arrow-array = { path = "../arrow-array", default-features = false }
+arrow-flight = { path = "../arrow-flight", features = ["flight-sql-experimental"] }
 arrow-buffer = { path = "../arrow-buffer", default-features = false }
 arrow-integration-test = { path = "../arrow-integration-test", default-features = false }
+arrow-ipc = { path = "../arrow-ipc", default-features = false }
+arrow-schema = { path = "../arrow-schema", default-features = false }
 async-trait = { version = "0.1.41", default-features = false }
+base64 = { version = "0.22", default-features = false, features = ["std"] }
 clap = { version = "4", default-features = false, features = ["std", "derive", "help", "error-context", "usage"] }
 futures = { version = "0.3", default-features = false }
+once_cell = { version = "1" }
 prost = { version = "0.13", default-features = false }
 serde = { version = "1.0", default-features = false, features = ["rc", "derive"] }
 serde_json = { version = "1.0", default-features = false, features = ["std"] }
